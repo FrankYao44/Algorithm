@@ -1,0 +1,45 @@
+# ==========================================
+# AlgorithmLab - Git Ignore Configuration
+# ==========================================
+
+# --- 编译与临时产物 ---
+# 虽然在容器 /tmp 构建，但防止在本地执行 cmake 时产生污染
+build/
+bin/
+lib/
+out/
+*.o
+*.a
+*.so
+*.exe
+*.out
+*.app
+
+# --- 调试与日志 ---
+# 运行 GTest 或 Valgrind 偶尔会产生的 dump 文件
+core
+*.log
+vgcore.*
+.stackdump
+
+# --- IDE / 编辑器配置 (宿主机侧) ---
+# 这些是每个程序员最容易误推的东西
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.settings/
+.classpath
+
+# --- 依赖管理 ---
+# 如果未来使用 FetchContent 下载了第三方库
+gtest_build/
+gtest_src/
+_deps/
+
+# --- 容器相关 ---
+# 某些容器工具生成的临时挂载信息
+.devcontainer/local-features/
