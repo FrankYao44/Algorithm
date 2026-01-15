@@ -1,0 +1,54 @@
+{
+  "name": "alg-dev",
+  // "build": {
+  //   "dockerfile": "./Dockerfile"
+  // },
+  "image": "algorithm:latest",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "runArgs": ["--privileged"],
+  // ========== 扩展与自动化配置 ==========
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // 1. 核心：CMake 自动配置与构建 (保留最必要的）
+        "cmake.generator": "Ninja", // 明确使用Ninja，与Dockerfile一致
+        "cmake.buildDirectory": "${workspaceFolder}/build",
+        // 2. 关键：禁用所有C++手动配置，让CMake Tools完全接管
+        // （删除了 C_Cpp.default.compilerPath, cppStandard 等设置）
+        // 3. 配置 clangd 从CMake获取信息
+        "clangd.arguments": [
+          "--background-index",
+          "--compile-commands-dir=${workspaceFolder}/build", // 指向CMake生成的文件
+          "--completion-style=detailed",
+          "--header-insertion=never"
+        ]
+      },
+      "extensions": [
+        // === 核心：CMake 与 C++ 智能感知 ===
+        "ms-vscode.cmake-tools",          // 核心：CMake配置、构建、调试驱动器
+        "llvm-vs-code-extensions.vscode-clangd", // 核心：代码智能感知（依赖CMake输出）
+
+        // === 多语言支持 ===
+        "ms-python.python",
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+
+        // === 效率工具 ===
+        "eamodio.gitlens",
+        "rooveterinaryinc.roo-cline",
+        "ms-azuretools.vscode-docker",
+        "mhutchie.git-graph"
+      ]
+    }
+  },
+  // ========== 容器启动后自动化命令 ==========
+  "postCreateCommand": [
+    "sudo", "chown", "-R", "coder:coder", "/workspace",
+  ],
+  "remoteEnv": {
+        "http_proxy": "http://192.168.192.1:7890",
+        "https_proxy": "http://192.168.192.1:7890",
+        "no_proxy": "localhost,127.0.0.1"
+    }
+}

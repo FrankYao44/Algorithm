@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "default",
+      "binaryDir": "/tmp/build",
+      "cacheVariables": {
+        "PROB": "test_aplusb"
+      }
+    }
+  ]
+}
