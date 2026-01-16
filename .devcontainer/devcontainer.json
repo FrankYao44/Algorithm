@@ -43,8 +43,13 @@
     }
   },
   // ========== 容器启动后自动化命令 ==========
+  "mounts":[
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/coder/.ssh_host,type=bind,consistency=cached",
+    
+  ],
   "postCreateCommand": [
-    "sudo", "chown", "-R", "coder:coder", "/workspace",
+    //"bash /workspace/.devcontainer/container_prerun.sh \"${localEnv:HOME}\"  \"${localEnv:USERPROFILE}\""
+    "sudo", "bash", ".devcontainer/container_prerun.sh", "${localEnv:HOME}", "${localEnv:USERPROFILE}",
   ],
   "remoteEnv": {
         "http_proxy": "http://192.168.192.1:7890",
