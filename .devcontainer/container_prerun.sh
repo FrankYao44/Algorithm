@@ -6,3 +6,4 @@ sudo chmod 700 /home/coder/.ssh
 sudo chmod 600 /home/coder/.ssh/*
 sudo rm /home/coder/.ssh/known_hosts
 sudo rm /home/coder/.ssh/known_hosts.old
+ssh -o StrictHostKeyChecking=accept-new  -T git@github.com 
