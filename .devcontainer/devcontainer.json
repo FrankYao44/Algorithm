@@ -27,7 +27,7 @@
       "extensions": [
         // === 核心：CMake 与 C++ 智能感知 ===
         "ms-vscode.cmake-tools",          // 核心：CMake配置、构建、调试驱动器
-        "llvm-vs-code-extensions.vscode-clangd", // 核心：代码智能感知（依赖CMake输出）
+        "ms-vscode.cpptools",
 
         // === 多语言支持 ===
         "ms-python.python",
@@ -35,7 +35,6 @@
         "vscjava.vscode-java-debug",
 
         // === 效率工具 ===
-        "eamodio.gitlens",
         "rooveterinaryinc.roo-cline",
         "ms-azuretools.vscode-docker",
         "mhutchie.git-graph"
