@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     sudo build-essential gcc g++ clang clang-tools clang-format lld \
     gdb lldb cmake make ninja-build ccache git curl wget unzip \
     vim neovim htop tree time valgrind ca-certificates libgtest-dev \
+    wget iproute2\
     && rm -rf /var/lib/apt/lists/*
 
 # ===== 2. Python (算法 + 测试) =====
