@@ -4,8 +4,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 # 稳健版换源（国内环境建议保留，海外环境请删除下面这两行 sed）
-RUN sed -i 's#http://.*archive.ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list && \
-    sed -i 's#http://.*security.ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list
+RUN sed -i 's#http://.*.ubuntu.com#http://mirrors.aliyun.com#g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y \
     sudo build-essential gcc g++ clang clang-tools clang-format lld \
