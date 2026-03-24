@@ -46,7 +46,7 @@
   ],
   "postCreateCommand": [
     //"bash /workspace/.devcontainer/container_prerun.sh \"${localEnv:HOME}\"  \"${localEnv:USERPROFILE}\""
-    "sudo", "bash", ".devcontainer/container_prerun.sh", "${localEnv:HOME}", "${localEnv:USERPROFILE}",
+    "bash", ".devcontainer/container_prerun.sh", "${localEnv:HOME}", "${localEnv:USERPROFILE}",
   ],
   // "remoteEnv": {
   //       "http_proxy": "http://172.17.0.1:7890",
