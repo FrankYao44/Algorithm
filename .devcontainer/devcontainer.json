@@ -2,7 +2,7 @@
   "name": "alg-dev",
   // "build": {
   //   "dockerfile": "./Dockerfile"
-  // },
+  // }, 
   "image": "algorithm:latest",
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
@@ -17,22 +17,20 @@
         // 2. 关键：禁用所有C++手动配置，让CMake Tools完全接管
         // （删除了 C_Cpp.default.compilerPath, cppStandard 等设置）
         // 3. 配置 clangd 从CMake获取信息
-        "clangd.arguments": [
-          "--background-index",
-          "--compile-commands-dir=${workspaceFolder}/build", // 指向CMake生成的文件
-          "--completion-style=detailed",
-          "--header-insertion=never"
-        ]
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "/bin/bash"
+            }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash"
       },
       "extensions": [
         // === 核心：CMake 与 C++ 智能感知 ===
         "ms-vscode.cmake-tools",          // 核心：CMake配置、构建、调试驱动器
-        "ms-vscode.cpptools",
+        "ms-vscode.cpptools", 
 
         // === 多语言支持 ===
         "ms-python.python",
-        "redhat.java",
-        "vscjava.vscode-java-debug",
 
         // === 效率工具 ===
         "rooveterinaryinc.roo-cline",
@@ -55,4 +53,5 @@
   //       "https_proxy": "http://172.17.0.1:7890",
   //       "no_proxy": "localhost,127.0.0.1"
   //   }
+    
 }
